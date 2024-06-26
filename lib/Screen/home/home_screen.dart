@@ -209,7 +209,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                               height: 50,
                                               width: 50,
                                             decoration: BoxDecoration(
-                                                color: Colors.red,
+                                                color: Colors.blue,
                                                 borderRadius: BorderRadius.circular(10)),
                                               child: Icon(Icons.delete,color: Colors.white,)
                                             ),
