@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app_expenses_income/Screen/Setting/Controller/language_service.dart';
-import 'package:get/get.dart';
 class Filter {
   final Icon icon;
   final String title;
@@ -22,7 +20,7 @@ class Category {
   final String name;
   final String? namekh;
   final String type;
-  final String icon;
+  final String? icon;
   final IconData? iconDefualt;
   final bool isCustom;
 
@@ -30,8 +28,8 @@ class Category {
      this.id,
     required this.name,
     this.namekh,
+    this.icon,
     required this.type,
-    required this.icon,
     this.iconDefualt,
     required this.isCustom,
   });
@@ -43,7 +41,7 @@ class Category {
       'name': name,
       'name_kh': namekh,
       'type': type,
-      'icon': icon,
+
 
     };
   }
@@ -54,44 +52,29 @@ class Category {
       namekh: map['name_kh'] ?? "",
       type: map['type'] ?? "",
       icon: map['icon'] ?? "",
+
       isCustom: true
 
     );
   }
 
 }
-IconData getIconFromString(String iconString) {
-  if (iconString.isEmpty)
-    return Icons.error; // Handle empty or null iconString
 
-  List<String> parts = iconString.split(',');
-  if (parts.length != 2) return Icons.error; // Handle unexpected format
-
-  int codePoint = int.tryParse(parts[0].trim()) ?? Icons.error.codePoint;
-  String fontFamily = parts[1].trim();
-
-  return IconData(
-    codePoint,
-    fontFamily: fontFamily,
-    fontPackage: CupertinoIcons
-        .iconFontPackage, // Specify the CupertinoIcons font package
-  );
-}
 List<Category> defaultExpenseCategories = [
-  Category(name: 'Taxes', type: 'Expenses',isCustom: false,iconDefualt: Icons.receipt ,icon: 'sad'),
-  Category(name: 'Travel', type: 'Expenses',isCustom: false,iconDefualt:Icons.directions_car,icon: 'sad'),
-  Category(name: 'Business Expenses', type: 'Expenses',isCustom: false,iconDefualt: Icons.business_center,icon: 'asd'),
-  Category(name: 'Gifts and Donations', type: 'Expenses',isCustom: false,iconDefualt:CupertinoIcons.creditcard,icon: 'asd'),
-  Category(name: 'Utilities', type: 'Expenses',isCustom: false,iconDefualt: Icons.lightbulb,icon: 'asd'),
-  Category(name: 'Transportation', type: 'Expenses',isCustom: false,iconDefualt: Icons.directions_bus,icon: 'sad'),
-  Category(name: 'Childcare and Education', type: 'Expenses',isCustom: false,iconDefualt: Icons.school,icon: 'asd'),
-  Category(name: 'Personal Care', type: 'Expenses',isCustom: false,iconDefualt: Icons.person,icon: 'asd'),
-  Category(name: 'Miscellaneous', type: 'Expenses',isCustom: false,iconDefualt: Icons.account_box,icon: 'asd')
+  Category(name: 'Taxes', type: 'Expenses',isCustom: false,iconDefualt: Icons.receipt ,),
+  Category(name: 'Travel', type: 'Expenses',isCustom: false,iconDefualt:Icons.directions_car,),
+  Category(name: 'Business Expenses', type: 'Expenses',isCustom: false,iconDefualt: Icons.business_center,),
+  Category(name: 'Gifts and Donations', type: 'Expenses',isCustom: false,iconDefualt:CupertinoIcons.creditcard,),
+  Category(name: 'Utilities', type: 'Expenses',isCustom: false,iconDefualt: Icons.lightbulb,),
+  Category(name: 'Transportation', type: 'Expenses',isCustom: false,iconDefualt: Icons.directions_bus,),
+  Category(name: 'Childcare and Education', type: 'Expenses',isCustom: false,iconDefualt: Icons.school,),
+  Category(name: 'Personal Care', type: 'Expenses',isCustom: false,iconDefualt: Icons.person,),
+  Category(name: 'Miscellaneous', type: 'Expenses',isCustom: false,iconDefualt: Icons.account_box,)
 ];
 
 
 List<Category> defaultIncomeCategories=[
-  Category(name: 'Salary', type: 'Income', isCustom: false,iconDefualt: Icons.monetization_on,icon: 'asd'),
-  Category(name: 'Investments', type: 'Income',isCustom: false,iconDefualt: Icons.show_chart,icon: 'asd'),
-  Category(name: 'Sale', type: 'Income',isCustom: false,iconDefualt: Icons.point_of_sale,icon: 'asd'),
+  Category(name: 'Salary', type: 'Income', isCustom: false,),
+  Category(name: 'Investments', type: 'Income',isCustom: false,),
+  Category(name: 'Sale', type: 'Income',isCustom: false,),
 ];

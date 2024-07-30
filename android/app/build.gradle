@@ -8,7 +8,7 @@ plugins {
 android {
     namespace = "com.example.flutter_app_expenses_income"
     compileSdk = 34
-    ndkVersion = 25.1.8937393
+    ndkVersion = "27.0.12077973"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -28,6 +28,7 @@ android {
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+
     }
 
     buildTypes {
@@ -44,9 +45,6 @@ flutter {
 }
 
 dependencies {
-    implementation(platform("com.google.firebase:firebase-bom:33.1.0"))
-    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.0"))
-
 }
 
 

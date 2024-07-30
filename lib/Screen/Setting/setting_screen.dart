@@ -89,23 +89,23 @@ class _SettingScreenState extends State<SettingScreen> {
                             height: Get.height * 0.1,
                             width: Get.width,
                             child: GetBuilder<LanguageController>(
-                              init: LanguageController(),
-                              builder: (controller) {
-                                return ListTile(
-                                  leading: CircleAvatar(
-                                      backgroundColor: Colors.grey[100],
-                                      child: list.icon),
-                                  title:  Text(list.text.tr, style: TextStyle(fontSize: 16,fontFamily: fontFamily,fontWeight: FontWeight.bold)),
-                                  subtitle: Text(controller.getCurrentLanguage(),style: TextStyle(
-                                      color: Colors.amber[600],fontFamily: fontFamily)),
-                                  trailing: list.trailIcon,
-                                  onTap: () {
-                                    if (list.onTap != null) {
-                                      list.onTap!(context);
-                                    }
-                                  },
-                                );
-                              }
+                                init: LanguageController(),
+                                builder: (controller) {
+                                  return ListTile(
+                                    leading: CircleAvatar(
+                                        backgroundColor: Colors.grey[100],
+                                        child: list.icon),
+                                    title:  Text(list.text.tr, style: TextStyle(fontSize: 16,fontFamily: fontFamily,fontWeight: FontWeight.bold)),
+                                    subtitle: Text(controller.getCurrentLanguage(),style: TextStyle(
+                                        color: Colors.amber[600],fontFamily: fontFamily)),
+                                    trailing: list.trailIcon,
+                                    onTap: () {
+                                      if (list.onTap != null) {
+                                        list.onTap!(context);
+                                      }
+                                    },
+                                  );
+                                }
                             ),
                           ),
                         );

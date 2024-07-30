@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_expenses_income/Screen/Setting/Controller/category_controller.dart';
 import 'package:flutter_app_expenses_income/Screen/Setting/Controller/darkmode_controller.dart';
@@ -44,6 +45,23 @@ class _CategoryScreenState extends State<CategoryScreen> {
           ),
         ],
       ),
+    );
+  }
+  IconData getIconFromString(String iconString) {
+    if (iconString.isEmpty)
+      return Icons.error; // Handle empty or null iconString
+
+    List<String> parts = iconString.split(',');
+    if (parts.length != 2) return Icons.error; // Handle unexpected format
+
+    int codePoint = int.tryParse(parts[0].trim()) ?? Icons.error.codePoint;
+    String fontFamily = parts[1].trim();
+
+    return IconData(
+      codePoint,
+      fontFamily: fontFamily,
+      fontPackage: CupertinoIcons
+          .iconFontPackage, // Specify the CupertinoIcons font package
     );
   }
   @override
@@ -100,7 +118,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                             collapsedIconColor: darkmodeController.isDarkMode ? Colors.white : Colors.black,
                             iconColor: darkmodeController.isDarkMode ? Colors.white : Colors.black,
                             children: category.map((category){
-                              IconData iconData = getIconFromString(category.icon);
+                                IconData iconData = getIconFromString(category.icon!);
                             return  Slidable(
                               enabled: category.isCustom,
                               endActionPane: ActionPane(
